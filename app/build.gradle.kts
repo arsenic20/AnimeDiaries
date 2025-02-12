@@ -67,6 +67,16 @@ dependencies {
     //ViewModel
     implementation(libs.androidx.lifecycle.viewmodel.compose)
 
+    // Paging 3 (Core)
+    implementation(libs.androidx.paging.runtime)
+
+    // Paging for Jetpack Compose
+    implementation(libs.androidx.paging.compose)
+
+    //coil
+    implementation(libs.coil.compose)
+
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
