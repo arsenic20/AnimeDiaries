@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">FameStream</string>
+    <string name="celebrities">Celebrities</string>
+    <string name="search_person">Search persons…</string>
+    <string name="search">Search</string>
+    <string name="search_by_name">Search by name..</string>
+    <string name="no_data_found">No data found..</string>
+    <string name="error_loading">Error loading more data..</string>
+    <string name="network_error">Something went wrong. Please try again</string>
 </resources>

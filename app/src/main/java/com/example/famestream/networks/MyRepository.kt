@@ -9,13 +9,21 @@ import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
 class MyRepository @Inject constructor(private val apiService: ApiService) {
-    fun getPopularPersonsPager(apiKey: String): Flow<PagingData<Person>> {
+    fun getPopularPersons(): Flow<PagingData<Person>> {
         return Pager(
-            config = PagingConfig(
-                pageSize = 20, // Page size from API
-                enablePlaceholders = false
-            ),
-            pagingSourceFactory = { PersonPagingSource(apiService, apiKey) }
+            config = PagingConfig(pageSize = 20, enablePlaceholders = false),
+            pagingSourceFactory = {
+                PersonPagingSource { page -> apiService.getPopularPersons(page = page) }
+            }
+        ).flow
+    }
+
+    fun searchPersons(query: String): Flow<PagingData<Person>> {
+        return Pager(
+            config = PagingConfig(pageSize = 20, enablePlaceholders = false),
+            pagingSourceFactory = {
+                PersonPagingSource { page -> apiService.searchPersons(query = query, page = page) }
+            }
         ).flow
     }
 }
