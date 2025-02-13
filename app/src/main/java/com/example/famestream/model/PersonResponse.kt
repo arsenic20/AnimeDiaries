@@ -18,7 +18,7 @@ data class Person(
 data class KnownFor(
     val id: Int,
     val title: String?,
-    val name: String?,
     val media_type: String,
-    val poster_path: String?
+    val poster_path: String?,
+    val release_date: String?
 )
