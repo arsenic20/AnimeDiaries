@@ -12,6 +12,7 @@ data class Person(
     val name: String,
     val profile_path: String?,
     val known_for_department: String,
+    val popularity: Float,
     val known_for: List<KnownFor>,
 )
 

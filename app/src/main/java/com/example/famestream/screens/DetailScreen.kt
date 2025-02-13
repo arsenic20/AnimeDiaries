@@ -33,6 +33,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -48,7 +49,7 @@ fun DetailScreen(person: Person, onNavigateBack: () -> Unit) {
             TopAppBar(
                 title = {
                     Text(
-                        text = person.name,
+                        text = stringResource(R.string.career_hub),
                         color = Color.Black,
                         textAlign = TextAlign.Center
                     )
@@ -89,18 +90,26 @@ fun DetailScreen(person: Person, onNavigateBack: () -> Unit) {
                         modifier = Modifier.weight(1f)
                     ) {
                         Text(
-                            text = "Popularity: ${person.known_for_department}",
-                            style = MaterialTheme.typography.bodyLarge.copy(
+                            text = person.name,
+                            style = MaterialTheme.typography.titleLarge.copy(
                                 fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary
+                                color = Color.Black
                             )
                         )
                         Spacer(modifier = Modifier.height(8.dp)) // Space between texts
                         Text(
-                            text = "Career Hub",
-                            style = MaterialTheme.typography.titleLarge.copy(
+                            text = "Popularity: ${person.popularity}",
+                            style = MaterialTheme.typography.bodyMedium.copy(
                                 fontWeight = FontWeight.Bold,
-                                color = MaterialTheme.colorScheme.primary
+                                color = Color.Gray
+                            )
+                        )
+                        Spacer(modifier = Modifier.height(4.dp)) // Space between texts
+                        Text(
+                            text = "Known for: ${person.known_for_department}",
+                            style = MaterialTheme.typography.bodyMedium.copy(
+                                fontWeight = FontWeight.Bold,
+                                color = Color.Gray
                             )
                         )
                     }
@@ -108,7 +117,7 @@ fun DetailScreen(person: Person, onNavigateBack: () -> Unit) {
                     //AsyncImage for profile picture
                     AsyncImage(
                         model = "https://image.tmdb.org/t/p/w500/${person.profile_path}",
-                        contentDescription = "News Image",
+                        contentDescription = "Profile Image",
                         modifier = Modifier
                             .padding(top = 10.dp)
                             .size(100.dp)
@@ -136,5 +145,3 @@ fun DetailScreen(person: Person, onNavigateBack: () -> Unit) {
         }
     }
 }
-
-

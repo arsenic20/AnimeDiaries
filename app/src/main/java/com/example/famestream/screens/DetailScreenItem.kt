@@ -19,6 +19,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
@@ -60,19 +62,20 @@ fun DetailScreenItem(knownFor: KnownFor) {
             // Title and details
             Spacer(modifier = Modifier.height(8.dp))
             Text(
-                text = knownFor.title ?: "Unknown Title",
+                text = knownFor.title ?: stringResource(R.string.unknown_title),
                 style = MaterialTheme.typography.bodyLarge,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
+                fontWeight = FontWeight.Bold,
                 color = Color.Black
             )
             Row {
                 Text(
-                    text = "Released on :",
+                    text = stringResource(R.string.released_on),
                     style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.secondary)
                 )
                 Text(
-                    text = knownFor.release_date ?: "NA",
+                    text = knownFor.release_date ?: stringResource(R.string.not_available),
                     style = MaterialTheme.typography.bodyMedium.copy(color = MaterialTheme.colorScheme.onSurfaceVariant)
                 )
             }

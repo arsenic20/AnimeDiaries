@@ -81,7 +81,7 @@ fun PopularPersonsScreen(onNavigateDetail: (Person) -> Unit) {
                     .padding(start = 10.dp, end = 10.dp)
                     .wrapContentHeight(),
                 trailingIcon = {
-                    IconButton(onClick = { isSearchBarActive = false }) {
+                    IconButton(onClick = { isSearchBarActive = !isSearchBarActive }) {
                         Icon(
                             imageVector = Icons.Default.Search,
                             contentDescription = stringResource(R.string.search)
@@ -124,7 +124,6 @@ fun PopularPersonsScreen(onNavigateDetail: (Person) -> Unit) {
                                         LoadingFailure(stringResource(R.string.error_loading))
                                     }
                                 }
-
                                 else -> {}
                             }
                         }

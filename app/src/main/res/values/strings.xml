@@ -3,6 +3,10 @@
     <string name="celebrities">Celebrities</string>
     <string name="search_person">Search persons…</string>
     <string name="search">Search</string>
+    <string name="career_hub">Career Hub</string>
+    <string name="not_available">NA</string>
+    <string name="released_on">Released on</string>
+    <string name="unknown_title">Unknown Title</string>
     <string name="search_by_name">Search by name..</string>
     <string name="no_data_found">Something went wrong \n No data found..</string>
     <string name="error_loading">Error loading more data..</string>
