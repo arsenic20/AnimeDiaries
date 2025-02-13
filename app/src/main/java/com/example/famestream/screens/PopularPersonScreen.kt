@@ -17,6 +17,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SearchBar
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
+import androidx.compose.material3.TopAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -34,11 +35,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.collectAsLazyPagingItems
 import com.example.famestream.R
+import com.example.famestream.model.Person
 import com.example.famestream.viewModel.PopularListViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun PopularPersonsScreen() {
+fun PopularPersonsScreen(onNavigateDetail: (Person) -> Unit) {
     val viewModel = hiltViewModel<PopularListViewModel>()
     val searchQuery = viewModel.searchQuery.collectAsState()
     val persons = viewModel.pagedPersons.collectAsLazyPagingItems()
@@ -57,7 +59,8 @@ fun PopularPersonsScreen() {
                         style = MaterialTheme.typography.titleLarge,
                         fontSize = 24.sp,
                     )
-                }
+                },
+                colors = TopAppBarColors(Color.Gray, Color.Gray, Color.Gray, Color.Gray, Color.Gray)
             )
         }
 
@@ -104,7 +107,7 @@ fun PopularPersonsScreen() {
                         items(persons.itemCount) { index ->
                             val person = persons[index]
                             person?.let {
-                                PersonItem(person)
+                                PersonItem(person, onNavigateDetail)
                             }
                         }
 
@@ -126,11 +129,7 @@ fun PopularPersonsScreen() {
                             }
                         }
                     }
-                when (persons.loadState.refresh) {
-                    is LoadState.Loading -> Loader()
-                    is LoadState.Error -> LoadingFailure(stringResource(R.string.network_error))
-                    else -> {}
-                }
+                if (persons.loadState.refresh is LoadState.Loading) Loader()
             }
         }
     }

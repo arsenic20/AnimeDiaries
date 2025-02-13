@@ -1,6 +1,7 @@
 package com.example.famestream.screens
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -18,19 +19,22 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.example.famestream.model.Person
 import coil.compose.AsyncImage
+import com.example.famestream.R
 
 
 @Composable
-fun PersonItem(person: Person) {
+fun PersonItem(person: Person, onNavigateDetail: (Person) -> Unit) {
 
     Box(
         modifier = Modifier
             .fillMaxWidth()
             .padding(vertical = 8.dp)
+            .clickable { onNavigateDetail(person) }
     ) {
         Card(
             modifier = Modifier.fillMaxWidth(),
@@ -52,7 +56,8 @@ fun PersonItem(person: Person) {
                             .size(64.dp)
                             .clip(RoundedCornerShape(8.dp))
                             .background(Color.Gray),
-                        contentScale = ContentScale.Crop
+                        contentScale = ContentScale.Crop,
+                        error = painterResource(id = R.drawable.ic_not_available)
                     )
                     Spacer(modifier = Modifier.width(16.dp))
                     Column(modifier = Modifier.weight(1f)) {
