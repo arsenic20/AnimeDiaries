@@ -19,6 +19,6 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "FameStream"
+rootProject.name = "AnimeDiaries"
 include(":app")
  

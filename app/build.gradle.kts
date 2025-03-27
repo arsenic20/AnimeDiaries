@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.famestream"
+    namespace = "com.example.animediaries"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.example.famestream"
+        applicationId = "com.example.animediaries"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
@@ -76,6 +76,8 @@ dependencies {
     //coil
     implementation(libs.coil.compose)
 
+    //YouTube
+    implementation (libs.core)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
